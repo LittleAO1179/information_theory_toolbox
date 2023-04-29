@@ -8,13 +8,20 @@ def main(page: ft.Page):
 
     def calculate_click(e):
         probability = covert_float(probability_input.current.value)
-        res = calculate_information_entropy(probability)
-        result_column.current.controls.append(
-            ft.Text(
-                f"概率{probability_input.current.value}对应信息熵是：{res:.3f} bits/符号")
-        )
-        probability_input.current.value = ''
-        page.update()
+        if probability == None:
+            result_column.current.controls.append(
+                ft.Text(
+                    f"请输入符合要求的数n，要求n在0-1之间")
+            )
+            page.update()
+        else:
+            res = calculate_information_entropy(probability)
+            result_column.current.controls.append(
+                ft.Text(
+                    f"概率{probability_input.current.value}对应信息熵是：{res:.3f} bits/符号")
+            )
+            probability_input.current.value = ''
+            page.update()
 
     page.add(
         ft.Row([

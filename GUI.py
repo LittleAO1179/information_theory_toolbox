@@ -27,7 +27,7 @@ def main(page: ft.Page):
         ft.Row([
             ft.TextField(ref=probability_input,
                          hint_text='1/9或0.32', label='概率',
-                         autofocus=True),
+                         autofocus=True,on_submit=calculate_click),
             ft.ElevatedButton(text="计算自信息",
                               on_click=calculate_click),
         ])
